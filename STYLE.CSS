@@ -1,0 +1,94 @@
+
+.navbar{
+   border: 2px solid black;
+   border-radius: 10px;
+   background-color:transparent;
+   margin-top: 10px;
+}
+a:hover{
+    background-color: grey;
+}
+#bottomlist{
+    height: 100px;
+    width: 100%;
+    background-color:#1C2534;
+}
+#bottom{
+    display: flex;
+    justify-content: center
+}
+h4{
+    text-align: center;
+    text-decoration: underline;
+    font-size: larger;
+    color: beige;
+}
+.side{
+    margin-right: 60px;
+    color: beige;
+}
+i{
+    margin-right:5px;
+}
+h2{
+    font-size: 45px;
+}
+#content1{
+    font-size: 30px;
+}
+/* Media Queries */
+
+@media only screen and (max-width: 768px) {
+    /* Styles for screens smaller than 768px */
+  
+    .back, .firstimg {
+      width: 100%; /* Make background image and image fill width */
+    }
+  
+    .navside {
+      float: none; /* Stack navigation links vertically */
+      text-align: center; /* Center navigation links */
+    }
+  
+    .navbar {
+      margin: 10px auto; /* Add margin for navigation links */
+    }
+  
+    h1, h2 {
+      font-size: 28px; /* Reduce heading sizes for smaller screens */
+    }
+  
+    #content1, p {
+      font-size: 18px; /* Reduce paragraph size for smaller screens */
+    }
+  
+    button {
+      width: 180px; /* Reduce button width for smaller screens */
+    }
+  
+    #bottomlist {
+      flex-direction: column; /* Stack bottom list items vertically */
+      align-items: center; /* Center bottom list items */
+    }
+  
+    .side {
+      margin-right: 0; /* Remove margin between bottom list items */
+      margin-bottom: 10px; /* Add margin for bottom list items */
+    }
+  
+    table {
+      width: 100%; /* Make tables responsive */
+    }
+  
+    /* Adjust layout for image and text section at the bottom */
+    #target, div:nth-child(6) {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  
+    div:nth-child(6) img {
+      margin-bottom: 20px;
+    }
+  }
+  

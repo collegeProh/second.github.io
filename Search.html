@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="Shlok" />
+        <meta name="description" content="lorem ipsum" />
+        <meta charset="utf-8" />
+        <meta name="keywords" content="HTML, CSS, JS, Weather Application" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>EDUCATOR</title>
+        <link href="img/WEBICON.jpg" rel="icon" type="image/x-icon" />
+        
+    </head>
+    <body>
+        <div>
+            <div style="float: right;">
+                <nav style="size: 16px;">
+                    <a href="index.html" style="color:black; text-decoration: none; margin-right: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Home</a>
+                    <a href="index.html" style="color: black; text-decoration: none; margin-right: 30px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">About</a>
+                    <a href="Search.html" style="color: black; text-decoration: none; margin-right: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Search</a>
+                    <a href="#" style="color: black; text-decoration: none; margin-right: 30px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Genre</a>
+                  </nav>
+                  </div>
+        <header>
+            <div >
+            <h1 style="color: black; font-size: 25px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+              <img src="img/Website logo.png" alt="WEBPAGE" width="50" height="50" />EDUCATOR
+            </h1>
+            
+            </div>
+            <div>
+            <input id="searchInput" type="text" placeholder="Enter the book name" style="height: 30px; width: 1000px;" />
+            <button onclick="searchBook()" style="border-radius: 40px;font-size: 24px; color: #ffffffff; background-color: #6EBB2D; width: 220px; height: 56px; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);">Search</button>
+            <div id="bookInfo"></div>
+            
+        </div>
+        </div>
+        <script>
+            // Function to search for a book
+function searchBook() {
+    var searchInput = document.getElementById("searchInput").value;
+    var url = "https://openlibrary.org/search.json?q=" + searchInput;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            displayBookInfo(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Function to display book information
+function displayBookInfo(data) {
+    var books = data.docs;
+    var bookInfo = document.getElementById("bookInfo");
+    bookInfo.innerHTML = "";
+
+    if (books.length === 0) {
+        bookInfo.innerHTML = "No results found.";
+        return;
+    }
+
+    books.forEach(book => {
+        var title = book.title;
+        var author = book.author_name ? book.author_name.join(", ") : "Unknown author";
+        var firstPublishYear = book.first_publish_year ? book.first_publish_year : "Unknown year";
+        var div = document.createElement("div");
+        div.innerHTML = `
+            <h2>${title}</h2>
+            <p>Author(s): ${author}</p>
+            <p>First Published: ${firstPublishYear}</p>
+        `;
+        bookInfo.appendChild(div);
+    });
+}
+
+        </script>
+    </body>
+    </html>
